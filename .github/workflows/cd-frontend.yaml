@@ -18,7 +18,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
-          docker stop frontend || true
-          docker rm frontend || true
-          docker pull harisheoran/frontend_img:master
-          docker run -d --name frontend -p 80:80 harisheoran/frontend_img:master
+          sudo docker pull harisheoran/frontend_img:master
+          sudo docker stop frontend || true
+          sudo docker rm frontend || true
+          sudo docker run -d --name frontend -p 80:80 harisheoran/frontend_img:master
