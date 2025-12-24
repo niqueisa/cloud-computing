@@ -22,3 +22,4 @@ jobs:
           sudo docker stop frontend || true
           sudo docker rm frontend || true
           sudo docker run -d --name frontend -p 80:80 harisheoran/frontend_img:master
+          
