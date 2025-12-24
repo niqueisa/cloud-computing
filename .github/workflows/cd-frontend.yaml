@@ -13,13 +13,12 @@ jobs:
     - name: deploy latest container
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }} # Change 'PASSWORD' to 'SSH_PRIVATE_KEY'
-        port: ${{ secrets.PORT }}
-        command_timeout: 10m
+        host: ${{ secrets.EC2_PUBLIC_IP }}
+        username: ec2-user
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
         script: |
-            docker pull harisheoran/frontend_img:master
-            docker compose -f docker-compose.yaml up -d
-            docker container prune -f
-            docker image prune -f
+          docker stop frontend || true
+          docker rm frontend || true
+          docker pull harisheoran/frontend_img:master
+          docker run -d --name frontend -p 80:80 harisheoran/frontend_img:master
