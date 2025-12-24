@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-fixed bg-gradient-to-br from-[#f8fafc] via-[#eef2ff] to-[#f5f3ff] min-h-screen text-slate-800 antialiased relative;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    background-repeat: repeat;
+    background-size: 200px;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: 
+      radial-gradient(at 10% 20%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+      radial-gradient(at 90% 80%, rgba(167, 139, 250, 0.1) 0px, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+/* Base Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.aesthetic-shadow {
+  box-shadow: 0 20px 50px -12px rgba(99, 102, 241, 0.15);
+}
+
+.glass-card {
+  @apply glass aesthetic-shadow rounded-[3rem] p-10 transition-all duration-500;
+}
+
+/* ADD THIS: Specific style for the Modal to make it pop and NOT look gray */
+.modal-glass {
+  background: rgba(255, 255, 255, 0.95); /* Nearly solid white */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
