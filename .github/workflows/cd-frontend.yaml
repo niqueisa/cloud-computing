@@ -15,7 +15,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.PASSWORD }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }} # Change 'PASSWORD' to 'SSH_PRIVATE_KEY'
         port: ${{ secrets.PORT }}
         command_timeout: 10m
         script: |
