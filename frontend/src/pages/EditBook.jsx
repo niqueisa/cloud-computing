@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
+const API_URL = 'http://BookVault-Backend-env.eba-inyxy3j5.us-east-1.elasticbeanstalk.com';
+
 const EditBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -16,7 +18,8 @@ const EditBook = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:5555/books/${id}`)
+    // UPDATED: Now uses the API_URL variable
+    axios.get(`${API_URL}/books/${id}`)
     .then((response) => {
         setAuthor(response.data.author);
         setPublishYear(response.data.publishYear)
@@ -24,20 +27,16 @@ const EditBook = () => {
         setLoading(false);
       }).catch((error) => {
         setLoading(false);
-        alert('An error happened. Please Chack console');
         console.log(error);
       });
   }, [])
   
   const handleEditBook = () => {
-    const data = {
-      title,
-      author,
-      publishYear,
-    };
+    const data = { title, author, publishYear };
     setLoading(true);
+    // UPDATED: Now uses the API_URL variable
     axios
-      .put(`http://localhost:5555/books/${id}`, data)
+      .put(`${API_URL}/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Edited successfully', { variant: 'success' });
@@ -45,7 +44,6 @@ const EditBook = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Chack console');
         enqueueSnackbar('Error', { variant: 'error' });
         console.log(error);
       });

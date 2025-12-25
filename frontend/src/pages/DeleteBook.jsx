@@ -5,6 +5,10 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
+// ... (imports remain the same)
+
+const API_URL = 'http://BookVault-Backend-env.eba-inyxy3j5.us-east-1.elasticbeanstalk.com';
+
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -13,7 +17,8 @@ const DeleteBook = () => {
 
   const handleDeleteBook = () => {
     setLoading(true);
-    axios.delete(`http://localhost:5555/books/${id}`)
+    // UPDATED: Now uses the API_URL variable
+    axios.delete(`${API_URL}/books/${id}`)
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Record Purged Successfully', { variant: 'success' });

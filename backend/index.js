@@ -1,43 +1,35 @@
 import express from 'express';
 import 'dotenv/config';
-import { PORT, mongoDBURL } from './config.js';
-import mongoose from 'mongoose';
-import booksRoute from './routes/booksRoute.js';
 import cors from 'cors';
+import sequelize from './config/database.js'; 
+import booksRoute from './routes/booksRoute.js';
 
 const app = express();
+// Elastic Beanstalk looks for port 8080 by default
+const PORT = process.env.PORT || 8080; 
 
-// Middleware for parsing request body
 app.use(express.json());
-
-// Middleware for handling CORS POLICY
-// Option 1: Allow All Origins with Default of cors(*)
 app.use(cors());
-// Option 2: Allow Custom Origins
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3000',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type'],
-//   })
-// );
 
-app.get('/', (request, response) => {
-  console.log(request);
-  return response.status(234).send('Welcome To MERN Stack Tutorial');
+// Health Check route: This must return 200 OK for AWS to show "Green" health
+app.get('/', (req, res) => {
+  res.status(200).send('Backend is running!');
 });
 
 app.use('/books', booksRoute);
 
+// 1. Start the server immediately so Nginx can find your app
+app.listen(PORT, () => {
+  console.log(`App is listening to port: ${PORT}`);
+});
 
-mongoose
-  .connect(mongoDBURL)
+// 2. Attempt to sync with the database separately
+// ADDED { alter: true } to automatically create the Books table in RDS
+sequelize.sync({ alter: true }) 
   .then(() => {
-    console.log('App connected to database');
-    app.listen(PORT, () => {
-      console.log(`App is listening to port: ${PORT}`);
-    });
+    console.log('Connected to RDS MySQL and Database Synced');
   })
   .catch((error) => {
-    console.log(error);
+    // If this fails, the server still runs, and you can see this error in AWS Logs
+    console.error('DATABASE_CONNECTION_ERROR:', error);
   });

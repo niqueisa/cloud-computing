@@ -1,23 +1,21 @@
-import mongoose from 'mongoose';
+import { DataTypes } from 'sequelize';
+import sequelize from '../config/database.js'; 
 
-const bookSchema = mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    author: {
-      type: String,
-      required: true,
-    },
-    publishYear: {
-      type: Number,
-      required: true,
-    },
+const Book = sequelize.define('Book', {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
-  {
-    timestamps: true,
-  }
-);
+  author: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  publishYear: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+}, {
+  timestamps: true, // This automatically creates "createdAt" and "updatedAt" columns
+});
 
-export const Book = mongoose.model('Book', bookSchema);
+export { Book };

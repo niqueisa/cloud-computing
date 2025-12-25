@@ -1,12 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "BookVault Backend for AWS Deployment",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "MamadTaheri68",
@@ -15,10 +14,10 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^4.18.2",
-    "mongoose": "^7.3.1",
-    "nodemon": "^2.0.22"
+    "mysql2": "^3.16.0",
+    "sequelize": "^6.37.7"
   },
   "overrides": {
-  "semver": "^7.5.3"
+    "semver": "^7.5.3"
   }
 }

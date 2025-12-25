@@ -3,7 +3,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineDelete } from 'react-icons/md';
 
-const BooksTable = ({ books, onShowModal }) => { // Accept onShowModal as a prop
+const BooksTable = ({ books, onShowModal }) => { 
   return (
     <div className='p-4 overflow-x-auto'>
       <table className='w-full border-separate border-spacing-y-4'>
@@ -18,7 +18,8 @@ const BooksTable = ({ books, onShowModal }) => { // Accept onShowModal as a prop
         </thead>
         <tbody>
           {books.map((book, index) => (
-            <tr key={book._id} className='group'>
+            // CHANGED: book._id -> book.id
+            <tr key={book.id} className='group'>
               <td className='glass p-4 rounded-l-[1.5rem] text-center font-bold text-slate-600'>{index + 1}</td>
               <td className='glass p-4 text-center font-black text-slate-800'>{book.title}</td>
               <td className='glass p-4 text-center text-slate-500 max-md:hidden'>{book.author}</td>
@@ -27,12 +28,14 @@ const BooksTable = ({ books, onShowModal }) => { // Accept onShowModal as a prop
                 <div className='flex justify-center gap-x-6'>
                   <BsInfoCircle 
                     className='text-2xl text-indigo-600 cursor-pointer hover:scale-125 transition-all' 
-                    onClick={() => onShowModal(book)} // Calls the Home.jsx function
+                    onClick={() => onShowModal(book)} 
                   />
-                  <Link to={`/books/edit/${book._id}`}>
+                  {/* CHANGED: book._id -> book.id */}
+                  <Link to={`/books/edit/${book.id}`}>
                     <AiOutlineEdit className='text-2xl text-amber-500 hover:scale-125 transition-all' />
                   </Link>
-                  <Link to={`/books/delete/${book._id}`}>
+                  {/* CHANGED: book._id -> book.id */}
+                  <Link to={`/books/delete/${book.id}`}>
                     <MdOutlineDelete className='text-2xl text-red-500 hover:scale-125 transition-all' />
                   </Link>
                 </div>

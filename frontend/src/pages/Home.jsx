@@ -5,21 +5,22 @@ import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
-import BookModal from '../components/home/BookModal'; // Import the Modal component
+import BookModal from '../components/home/BookModal';
+
+const API_URL = 'http://BookVault-Backend-env.eba-inyxy3j5.us-east-1.elasticbeanstalk.com';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table');
-  
-  // Modal State
   const [showModal, setShowModal] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     setLoading(true);
+    // UPDATED: Now uses the API_URL variable
     axios
-      .get('http://localhost:5555/books')
+      .get(`${API_URL}/books`)
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);
