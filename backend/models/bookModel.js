@@ -15,7 +15,7 @@ const Book = sequelize.define('Book', {
     allowNull: false,
   },
 }, {
-  timestamps: true, // This automatically creates "createdAt" and "updatedAt" columns
+  timestamps: true,
 });
 
 export { Book };

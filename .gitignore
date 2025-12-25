@@ -1,2 +1,24 @@
-node_modules
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Production Builds
+dist/
+**/dist/
+build/
+deploy.zip
+
+# Security & Secrets (CRITICAL)
 .env
+.env.local
+backend/.env
+frontend/.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS & Editors
+.DS_Store
+.vscode/
+.idea/

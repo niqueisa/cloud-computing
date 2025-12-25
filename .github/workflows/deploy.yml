@@ -31,7 +31,6 @@ jobs:
 
       # --- BACKEND SECTION ---
       - name: Generate Deployment Package (Zip)
-        # This zips the backend folder so AWS gets package.json + your code
         run: |
           cd backend
           zip -r ../deploy.zip . 
@@ -45,5 +44,4 @@ jobs:
           environment_name: BookVault-Backend-env
           version_label: ${{ github.sha }}
           region: us-east-1
-          # FIXED: Now pointing to the zip file created in the previous step
           deployment_package: deploy.zip
