@@ -1,6 +1,6 @@
 
 # Book Vault: Cloud-Native MERN Application
-
+> **Project URL:** [http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com/](http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com/)
 A professional full-stack application managed with a **CI/CD pipeline** and deployed on **Amazon Web Services (AWS)**.
 
 ## ☁️ Architecture & Deployment
