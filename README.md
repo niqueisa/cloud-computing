@@ -1,7 +1,7 @@
 
 # Book Vault: Cloud-Native MERN Application
 
-> **Project URL:** [http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com/](http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com)
+> **Project URL:** [http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com](http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com)
 
 ## ☁️ Architecture & Deployment
 
