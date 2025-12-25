@@ -1,102 +1,88 @@
-[Production-Grade 3‑Tier MERN Deployment on AWS with Docker, Nginx, CI/CD & Terraform ↗](https://medium.com/@ravikantdiwakar/production-grade-3-tier-mern-deployment-on-aws-with-docker-nginx-ci-cd-terraform-42c081047e12)
 
-# Book Store MERN Stack
+# Book Vault: Cloud-Native MERN Application
 
-A full-stack **MERN** (MongoDB, Express, React, Node.js) application for managing books with complete CRUD operations.
+A professional full-stack application managed with a **CI/CD pipeline** and deployed on **Amazon Web Services (AWS)**.
 
-![MERN Stack](https://img.shields.io/badge/MERN-Stack-green)
+## ☁️ Architecture & Deployment
 
-## Features
+This project follows a modern cloud-native deployment strategy:
 
-- **CRUD Operations**: Create, read, update, and delete books.
-- **RESTful API**: Robust backend handling requests and responses.
-- **Database**: Persistent storage using MongoDB and Mongoose.
-- **Responsive Frontend**: Modern React UI with Tailwind CSS.
-- **Components**: Reusable components, modals, and notifications.
+* **Frontend**: Hosted as a static website on **Amazon S3**.
+* **Backend**: Deployed on **AWS Elastic Beanstalk** (Node.js environment).
+* **Database**: Persistent relational storage using **Amazon RDS (MySQL)**.
+* **CI/CD**: Fully automated pipeline using **GitHub Actions** that deploys on every push to the `master` branch.
 
-## Tech Stack
+## ✨ Features
 
-- **Frontend**: React, Vite, React Router, Tailwind CSS
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB (Mongoose ODM)
+* **Full CRUD**: Create, Read, Update, and Delete book records.
+* **Relational Database**: Structured data management using **Sequelize ORM** and **MySQL**.
+* **Responsive UI**: Modern interface built with **React**, **Vite**, and **Tailwind CSS**.
+* **Automated Delivery**: Zero-downtime deployment process via AWS integration.
 
-## Project Structure
+## 🛠️ Tech Stack
 
-```
-Book-Store-MERN-Stack/
-├── backend/       # API, Routes, Models, Config
-├── frontend/      # React App, Components, Pages
-├── .gitignore
+* **Frontend**: React.js, Vite, Tailwind CSS, Axios.
+* **Backend**: Node.js, Express.js, Sequelize.
+* **Database**: MySQL (Amazon RDS).
+* **DevOps**: GitHub Actions, AWS S3, AWS Elastic Beanstalk.
+
+## 📂 Project Structure
+
+```text
+CLOUD-COMPUTING/
+├── .github/workflows/
+│   └── deploy.yml      # Automated CI/CD Pipeline
+├── backend/            # Express API & Sequelize Models
+├── frontend/           # React Frontend (Vite)
+├── .gitignore          # Optimized for AWS security
 └── README.md
-```
 
-## Getting Started
+```
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14 or higher)
-- [MongoDB Atlas](https://www.mongodb.com/atlas/database) account or local MongoDB instance
+* Node.js (v18+)
+* MySQL Instance (Local or Amazon RDS)
+* AWS CLI configured (for manual deployment)
 
-### Backend Setup
+### Local Setup
 
-1. **Navigate to the backend directory:**
-   ```bash
-   cd backend
-   ```
+1. **Clone the Repository**:
+```bash
+git clone https://github.com/niqueisa/cloud-computing.git
+cd cloud-computing
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+```
+2. **Backend Setup**:
+```bash
+cd backend
+npm install
 
-3. **Configure Environment Variables:**
-   Create a `.env` file in the `backend` directory based on `.env.example`.
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Open `.env` and add your MongoDB connection string:
-   ```env
-   PORT=5555
-   MONGODB_URL=your_mongodb_connection_string
-   ```
-   > **Note:** replace `your_mongodb_connection_string` with your actual MongoDB URI.
+```
+Create a `.env` file in `/backend`:
+```env
+PORT=5555
+DB_NAME=book_vault
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_HOST=your_rds_endpoint
 
-4. **Run the server:**
-   ```bash
-   npm run dev
-   ```
-   The server should start on port `5555` (or your configured port).
+```
+* **Run**: `npm run dev`.
 
-### Frontend Setup
+3. **Frontend Setup**:
+```bash
+cd ../frontend
+npm install
+npm run dev
+```
 
-1. **Open a new terminal and navigate to the frontend directory:**
-   ```bash
-   cd frontend
-   ```
+## 🏗️ Deployment (CI/CD)
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+The deployment is fully automated:
 
-3. **Run the application:**
-   ```bash
-   npm run dev
-   ```
-   Open your browser to the URL shown (usually `http://localhost:5173`).
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/books` | Get all books |
-| GET | `/books/:id` | Get a specific book |
-| POST | `/books` | Create a new book |
-| PUT | `/books/:id` | Update a book |
-| DELETE | `/books/:id` | Delete a book |
-
-## Troubleshooting
-
-- **Database Connection Error**: If you see `ENOTFOUND` or connection timeout errors, ensure your `MONGODB_URL` in `.env` is correct and your IP address is whitelisted in MongoDB Atlas.
-- **CORS Errors**: If the frontend cannot access the backend, ensure CORS is correctly configured in `backend/index.js` to allow the frontend's origin.
+1. Developer pushes code to the **`master`** branch.
+2. **GitHub Actions** triggers the `Deploy to AWS` workflow.
+3. The workflow builds the React production files and syncs them to the **S3 Bucket**.
+4. The workflow zips the Node.js backend and deploys it to **Elastic Beanstalk**.
