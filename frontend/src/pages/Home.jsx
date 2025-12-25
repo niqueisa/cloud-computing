@@ -18,7 +18,6 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    // UPDATED: Now uses the API_URL variable
     axios
       .get(`${API_URL}/books`)
       .then((response) => {
@@ -49,7 +48,7 @@ const Home = () => {
           </div>
           
           <h1 className='text-6xl font-black tracking-tighter text-slate-900 leading-none'>
-            Book<span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600'>Archive</span>
+            Books<span className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600'>Archive</span>
           </h1>
           <p className='text-slate-400 font-medium ml-1'>Curating your personal literary universe.</p>
         </div>
