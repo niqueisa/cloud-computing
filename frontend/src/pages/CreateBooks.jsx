@@ -5,6 +5,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
+// STEP 1: Define the Base URL here (No /books at the end)
+const API_URL = 'http://BookVault-Backend-env.eba-inyxy3j5.us-east-1.elasticbeanstalk.com';
+
 const CreateBooks = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');

@@ -8,7 +8,6 @@ const BooksCard = ({ books, onShowModal }) => {
   return (
     <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 py-8'>
       {books.map((item, index) => (
-        // CHANGED: item._id -> item.id
         <div key={item.id} className='glass-card group relative overflow-hidden hover:-translate-y-3 transition-all duration-500 border-l-4 border-l-indigo-500'>
           <span className='absolute -right-6 -top-10 text-[12rem] font-black text-slate-200/20 pointer-events-none group-hover:text-indigo-200/30 transition-colors'>
             {index + 1}
