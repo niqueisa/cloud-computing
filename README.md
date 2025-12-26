@@ -1,5 +1,5 @@
 
-# Book Vault: Cloud-Native MERN Application
+# Book Archive: Cloud-Native MERN Application
 
 > **Project URL:** [http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com](http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com)
 
@@ -11,6 +11,7 @@ This project follows a modern cloud-native deployment strategy:
 * **Backend**: Deployed on **AWS Elastic Beanstalk** (Node.js environment).
 * **Database**: Persistent relational storage using **Amazon RDS (MySQL)**.
 * **CI/CD**: Fully automated pipeline using **GitHub Actions** that deploys on every push to the `master` branch.
+![Architecture Diagram](./assets/architecture.jpg)
 
 ## ✨ Features
 
