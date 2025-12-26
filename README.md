@@ -11,6 +11,7 @@ This project follows a modern cloud-native deployment strategy:
 * **Backend**: Deployed on **AWS Elastic Beanstalk** (Node.js environment).
 * **Database**: Persistent relational storage using **Amazon RDS (MySQL)**.
 * **CI/CD**: Fully automated pipeline using **GitHub Actions** that deploys on every push to the `master` branch.
+
 ![Architecture Diagram](./assets/architecture.jpg)
 
 ## ✨ Features
@@ -33,6 +34,7 @@ This project follows a modern cloud-native deployment strategy:
 CLOUD-COMPUTING/
 ├── .github/workflows/
 │   └── deploy.yml      # Automated CI/CD Pipeline
+├── assets/
 ├── backend/            # Express API & Sequelize Models
 ├── frontend/           # React Frontend (Vite)
 ├── .gitignore          # Optimized for AWS security
