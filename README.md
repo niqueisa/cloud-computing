@@ -3,7 +3,7 @@
 
 > **Project URL:** [http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com](http://my-book-vault-frontend-2025.s3-website-us-east-1.amazonaws.com)
 
-## ☁️ Architecture & Deployment
+## Architecture & Deployment
 
 This project follows a modern cloud-native deployment strategy:
 
@@ -14,21 +14,21 @@ This project follows a modern cloud-native deployment strategy:
 
 ![Architecture Diagram](./assets/architecture.jpg)
 
-## ✨ Features
+## Features
 
 * **Full CRUD**: Create, Read, Update, and Delete book records.
 * **Relational Database**: Structured data management using **Sequelize ORM** and **MySQL**.
 * **Responsive UI**: Modern interface built with **React**, **Vite**, and **Tailwind CSS**.
 * **Automated Delivery**: Zero-downtime deployment process via AWS integration.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Frontend**: React.js, Vite, Tailwind CSS, Axios.
 * **Backend**: Node.js, Express.js, Sequelize.
 * **Database**: MySQL (Amazon RDS).
 * **DevOps**: GitHub Actions, AWS S3, AWS Elastic Beanstalk.
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 CLOUD-COMPUTING/
@@ -41,7 +41,7 @@ CLOUD-COMPUTING/
 └── README.md
 
 ```
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -81,7 +81,7 @@ npm install
 npm run dev
 ```
 
-## 🏗️ Deployment (CI/CD)
+## Deployment (CI/CD)
 
 The deployment is fully automated:
 
